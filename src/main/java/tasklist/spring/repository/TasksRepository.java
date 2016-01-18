@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Repository
-@ComponentScan
 public interface TasksRepository extends CrudRepository<TasksEntity, Integer>{
 
     @Query("SELECT id, title, description, status, duedate, priority  FROM TasksEntity WHERE status = ?1")

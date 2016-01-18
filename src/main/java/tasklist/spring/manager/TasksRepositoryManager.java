@@ -10,8 +10,6 @@ import tasklist.spring.repository.TasksRepository;
 
 import java.util.*;
 
-@Service
-@ComponentScan
 public class TasksRepositoryManager {
 
     TasksRepository tasksRepository;

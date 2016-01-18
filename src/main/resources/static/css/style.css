@@ -1,0 +1,61 @@
+html {
+    background-color: honeydew;
+}
+.button {
+    margin-top: 5px;
+    border-radius: 20px;
+    border: 2px solid #000;
+    width: 60px;
+    background-color: #90EE90;
+    display:table-cell;
+    float: right;
+}
+.button:hover {
+    background-color: #20B2AA;
+}
+#links ul {
+    list-style-type: none;
+    width: 400px;
+}
+
+#links li {
+    border-bottom: 1px dotted #999;
+    border-width: 1px 0;
+    margin: 5px 0;
+}
+
+#links li h3 {
+    color: #990000;
+    display: block;
+    font: bold 120% Arial, Helvetica, sans-serif;
+    padding: 5px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    text-decoration: none;
+}
+
+* html #links li {  /* make hover effect work in IE */
+    width: 400px;
+}
+
+#links li:hover {
+    background: #ffffcc;
+}
+
+#links em {
+    color: #333;
+    display: block;
+    font: normal 100% Verdana, Helvetica, sans-serif;
+    line-height: 125%;
+    padding: 5px;
+}
+
+#links span {
+    color: #125F15;
+    font: normal 80% Verdana, Helvetica, sans-serif;
+    line-height: 150%;
+    padding: 5px;
+}
+.hidden {
+    display: none;
+}

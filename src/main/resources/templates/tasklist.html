@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8"/>
+  <title>To do List</title>
+  <link th:rel="stylesheet" type="text/css" th:type="@{text/css}" href="../static/css/style.css" th:href="@{css/style.css}" />
+  <link th:rel="stylesheet" type="text/css" th:type="@{text/css}" href="../static/css/form.css" th:href="@{css/form.css}" />
+  <link th:rel='stylesheet' type="text/css" th:type="@{text/css}" href="@{http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300}"
+        th:href="@{http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300}"/>
+</head>
+<body>
+
+<div style="margin-top:5%;">
+  <table>
+  <tr>
+  <td>
+  <div id="links" th:if ="${tasks != null}">
+    <ul>
+      <li th:each="tasksEntity : ${tasks}">
+        <form th:if="${tasksEntity.status == 'p'}" action="/update" th:action="@{/update}" method="post">
+          <input style="display:none" th:type="number" th:value="${tasksEntity.id}" th:name="id"/>
+          <input style="display:none" th:type="text" th:value="${tasksEntity.title}" th:name="title"/>
+          <input style="display:none" th:type="text" th:value="${tasksEntity.description}" th:name="description"/>
+          <input style="display:none" th:type="text" th:value="d" th:name="status"/>
+          <input style="display:none" th:type="text" th:value="${tasksEntity.duedate}" th:name="duedate"/>
+          <input style="display:none" th:type="text" th:value="${tasksEntity.priority}" th:name="priority"/>
+          <input type="submit" class="button" th:value="done"/>
+        </form>
+        <form th:if="${tasksEntity.status == 'd'}" action="/delete" th:action="@{/delete}" method="post">
+          <input style="display:none" th:type="number" th:value="${tasksEntity.id}" th:name="id"/>
+          <input type="submit" class="button" th:value="delete"/>
+        </form>
+        <h3 th:text="${tasksEntity.title}"/>
+        <em th:text="${tasksEntity.description}"/>
+        <span th:if="${tasksEntity.duedate != ''}" th:text="'Due date: ' + ${tasksEntity.duedate}"/>
+        <span th:if="${tasksEntity.duedate == ''}" th:text="'Due date: ' + undefined"/><br/>
+        <span th:if="${tasksEntity.priority != ''}" th:text="'Priority: ' + ${tasksEntity.priority}"/>
+        <span th:if="${tasksEntity.priority == ''}" th:text="'Priority: ' + low"/>
+      </li>
+    </ul>
+  </div>
+  </td>
+  <td>
+  <div th:class="form-style-8">
+    <h2>Add new To DO task</h2>
+    <form action="/create" th:action="@{/create}" method="post">
+      <input type="text" th:name="title" placeholder="Title*"/>
+      <input type="text" th:name="description" placeholder="Description*" />
+      <input type="text" th:name="duedate" placeholder="Due Date" />
+      <input type="text" th:name="priority" placeholder="Priority: high, medium, low"
+                       pattern="high|medium|low"/>
+      <input type="text" style="display:none" th:name="status" th:value="p" />
+      <input type="submit" th:value="save" />
+    </form>
+  </div>
+  </td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
